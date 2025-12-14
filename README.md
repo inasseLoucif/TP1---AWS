@@ -62,7 +62,7 @@ Pour les besoins du débogage, l’accès HTTP direct depuis mon IP a été temp
 
 ### Partie 4 – Installation de l’AWS CLI et ajout des autres instances
 Sur le poste local, l’AWS CLI a été installée puis configurée avec les identifiants fournis pour le TP, la région par défaut étant eu-west-1.
- Cette interface a été utilisée pour créer une seconde instance XXX_Instance2 (et éventuellement une troisième pour des tests supplémentaires) à partir de l’AMI ILF-AMI-WEB, en réutilisant le Security Group ILF-SecurityGroup-EC2.
+ Cette interface a été utilisée pour créer une seconde instance ILF_Instance2à partir de l’AMI ILF-AMI-WEB, en réutilisant le Security Group ILF-SecurityGroup-EC2.
 La commande de création a spécifié l’AMI, le type t2.micro, le Security Group, la paire de clés SSH et le nombre d’instances souhaité.
  Une fois les nouvelles instances disponibles, elles ont été ajoutées au Target Group ILF-TargetGroup grâce à une commande d’enregistrement des cibles qui associe chaque instance-id au port 80 dans le Target Group.
 ![Capture création instance 2 avec aws CLI](cli1.png)
