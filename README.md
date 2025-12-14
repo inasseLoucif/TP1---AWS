@@ -16,7 +16,7 @@ Le Load Balancer utilise le Target Group ILF-TargetGroup comme destination par d
 
 ![Capture Target group](target-group.png)
 ![Capture Load Balancer](LB.png)
-![Capture Load Balancer](load-balancer-page.png)
+![Capture id instance navigateur](id-instance.png)
 
 
 ### Partie 2 – Création de l’AMI personnalisée
@@ -39,8 +39,8 @@ Une fois tout vérifié (Apache opérationnel, script fonctionnel, page accessib
  Cette AMI sert de base standard pour toutes les instances web du TP, ce qui garantit une configuration homogène.
 
 
-![Capture Target Group](target-group-healthy.png)
-![Capture Load Balancer](load-balancer-page.png)
+![Capture détails AMI web](AMI.png)
+![Capture crontab](crontab.png)
 
 ### Partie 3 – Première instance EC2 et configuration des Security Groups
 Un Security Group ILF-SecurityGroup-EC2 a été créé pour les instances web.
