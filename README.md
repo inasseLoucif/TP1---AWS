@@ -17,7 +17,7 @@ Le Load Balancer utilise le Target Group ILF-TargetGroup comme destination par d
 ![Capture Target group](target-group.png)
 ![Capture Load Balancer](LB.png)
 ![Capture id instance navigateur](id-instance.png)
-
+![Capture security group LB](EC2.png)
 
 ### Partie 2 – Création de l’AMI personnalisée
 Une première instance EC2 de base a été lancée à partir de l’AMI standard Amazon Linux 2, en type t2.micro.
@@ -41,6 +41,7 @@ Une fois tout vérifié (Apache opérationnel, script fonctionnel, page accessib
 
 ![Capture détails AMI web](AMI.png)
 ![Capture crontab](crontab.png)
+![Capture installation](httpd.png)
 
 ### Partie 3 – Première instance EC2 et configuration des Security Groups
 Un Security Group ILF-SecurityGroup-EC2 a été créé pour les instances web.
@@ -56,17 +57,17 @@ Cette configuration garantit que le serveur web n’est pas directement exposé 
  Après démarrage, le serveur Apache et le script de métadonnées se sont exécutés automatiquement, et une connexion depuis le Load Balancer a permis d’afficher la page contenant l’instance-id de ILF-Instance1.
 Pour les besoins du débogage, l’accès HTTP direct depuis mon IP a été temporairement autorisé afin de vérifier le bon fonctionnement du script et d’Apache.
  Une fois la validation faite, la règle a été resserrée pour ne laisser passer que le trafic provenant du Security Group du Load Balancer, conformément aux consignes de sécurité du TP.
-
-![Capture Load Balancer](load-balancer-page.png)
-![Capture Load Balancer](load-balancer-page.png)
+![Capture Security Group EC2](security-group.png)
+![Capture instance 1](instance1.png)
 
 ### Partie 4 – Installation de l’AWS CLI et ajout des autres instances
 Sur le poste local, l’AWS CLI a été installée puis configurée avec les identifiants fournis pour le TP, la région par défaut étant eu-west-1.
  Cette interface a été utilisée pour créer une seconde instance XXX_Instance2 (et éventuellement une troisième pour des tests supplémentaires) à partir de l’AMI ILF-AMI-WEB, en réutilisant le Security Group ILF-SecurityGroup-EC2.
 La commande de création a spécifié l’AMI, le type t2.micro, le Security Group, la paire de clés SSH et le nombre d’instances souhaité.
  Une fois les nouvelles instances disponibles, elles ont été ajoutées au Target Group ILF-TargetGroup grâce à une commande d’enregistrement des cibles qui associe chaque instance-id au port 80 dans le Target Group.
-![Capture Load Balancer](load-balancer-page.png)
-![Capture Load Balancer](load-balancer-page.png)
+![Capture création instance 2 avec aws CLI](cli1.png)
+![Capture création instance 2 avec aws CLI](cli2.png)
+![Capture résultat target group](target-group.png)
 
 En pratique, seule l’instance créée via l’AWS CLI (ILF-Instance2) était effectivement enregistrée dans le Target Group ILF-TargetGroup lors des derniers tests, tandis que ILF-Instance1 n’y figurait plus.
 Lorsque j’appelais le DNS du Load Balancer dans le navigateur, la page affichait donc toujours le même instance-id, ce qui est logique puisque tout le trafic HTTP était dirigé vers cette unique instance présente dans le Target Group, malgré la présence de plusieurs instances EC2 dans la console.
