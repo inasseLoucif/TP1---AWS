@@ -13,7 +13,7 @@ Un Application Load Balancer ILF-LoadBalancer a ensuite été créé.
 Le Load Balancer utilise le Target Group ILF-TargetGroup comme destination par défaut de son listener HTTP en port 80.
  Lorsqu’on appelle le DNS public du Load Balancer en HTTP, la requête est transmise à une des instances du Target Group, qui renvoie la page web contenant l’instance-id.
 
-![Capture Target Group](target-group-healthy.png)
+![ILF-TargetGroup](target group.png)
 ![Capture Load Balancer](load-balancer-page.png)
 ![Capture Load Balancer](load-balancer-page.png)
 
