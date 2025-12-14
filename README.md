@@ -11,10 +11,11 @@ Un Application Load Balancer ILF-LoadBalancer a ensuite été créé.
  Il est associé à des subnets publics de la VPC par défaut et à un Security Group dédié ILF-SecurityGroup-LB.
  Ce Security Group autorise le trafic entrant HTTP (port 80) uniquement depuis l’adresse IP publique utilisée dans les locaux d’Ynov (et éventuellement mon IP personnelle pour certains tests), ce qui limite l’exposition du service.
 Le Load Balancer utilise le Target Group ILF-TargetGroup comme destination par défaut de son listener HTTP en port 80.
+
  Lorsqu’on appelle le DNS public du Load Balancer en HTTP, la requête est transmise à une des instances du Target Group, qui renvoie la page web contenant l’instance-id.
 
 ![ILF-TargetGroup](target group.png)
-![Capture Load Balancer](load-balancer-page.png)
+![Capture Load Balancer](LB.png)
 ![Capture Load Balancer](load-balancer-page.png)
 
 
