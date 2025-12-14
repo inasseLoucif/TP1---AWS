@@ -14,7 +14,7 @@ Le Load Balancer utilise le Target Group ILF-TargetGroup comme destination par d
 
  Lorsqu’on appelle le DNS public du Load Balancer en HTTP, la requête est transmise à une des instances du Target Group, qui renvoie la page web contenant l’instance-id.
 
-![Capture Target group](target group.png)
+![Capture Target group](target-group.png)
 ![Capture Load Balancer](LB.png)
 ![Capture Load Balancer](load-balancer-page.png)
 
